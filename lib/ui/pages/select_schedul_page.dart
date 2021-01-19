@@ -46,23 +46,24 @@ class _SelectSchedulPageState extends State<SelectSchedulPage> {
             ListView(
               children: <Widget>[
                 // note : Back Button
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    margin: EdgeInsets.only(top: 20, left: defaultMargin),
-                    padding: EdgeInsets.all(1),
-                    child: GestureDetector(
-                      onTap: () {
-                        context
-                            .bloc<PageBloc>()
-                            .add(GoToMovieDetailPage(widget.movieDetail));
-                      },
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.black,
+                Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 20, left: defaultMargin),
+                      padding: EdgeInsets.all(1),
+                      child: GestureDetector(
+                        onTap: () {
+                          context
+                              .bloc<PageBloc>()
+                              .add(GoToMovieDetailPage(widget.movieDetail));
+                        },
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
 
                 // note : Chose Date
@@ -108,14 +109,36 @@ class _SelectSchedulPageState extends State<SelectSchedulPage> {
                 ),
                 Align(
                   alignment: Alignment.topCenter,
-                  child: FloatingActionButton(
-                    backgroundColor: (isValid) ? mainColor : Color(0xFFE4E4E4),
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: (isValid) ? Colors.white : Color(0xFFBEBEBE),
+                  child: BlocBuilder<UserBloc, UserState>(
+                    builder: (_, userState) => FloatingActionButton(
+                      elevation: 0,
+                      backgroundColor:
+                          (isValid) ? mainColor : Color(0xFFE4E4E4),
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: (isValid) ? Colors.white : Color(0xFFBEBEBE),
+                      ),
+                      onPressed: () {
+                        if (isValid) {
+                          context
+                              .bloc<PageBloc>()
+                              .add(GoToSelectSeatPage(Ticket(
+                                widget.movieDetail,
+                                selectedTheater,
+                                DateTime(selectedDate.year, selectedDate.month,
+                                    selectedDate.day, selectedTime),
+                                randomAlphaNumeric(12).toUpperCase(),
+                                null,
+                                (userState as UserLoaded).user.name,
+                                null,
+                              )));
+                        }
+                      },
                     ),
-                    onPressed: null,
                   ),
+                ),
+                SizedBox(
+                  height: defaultMargin,
                 ),
               ],
             ),
