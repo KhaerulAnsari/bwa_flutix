@@ -13,7 +13,7 @@ class _SelectSchedulPageState extends State<SelectSchedulPage> {
   DateTime selectedDate;
   int selectedTime;
   Theater selectedTheater;
-  bool isValid;
+  bool isValid = false;
 
   @override
   void initState() {
@@ -101,6 +101,22 @@ class _SelectSchedulPageState extends State<SelectSchedulPage> {
 
                 // note: Chose Time
                 generateTimeTable(),
+
+                // note: Next Button
+                SizedBox(
+                  height: 10,
+                ),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: FloatingActionButton(
+                    backgroundColor: (isValid) ? mainColor : Color(0xFFE4E4E4),
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: (isValid) ? Colors.white : Color(0xFFBEBEBE),
+                    ),
+                    onPressed: null,
+                  ),
+                ),
               ],
             ),
           ],
@@ -131,18 +147,26 @@ class _SelectSchedulPageState extends State<SelectSchedulPage> {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: schedule.length,
-            itemBuilder: (_, index) => SelectableBox(
-              "${schedule[index]}:00",
-              height: 50,
-              isSelected:
-                  selectedTheater == theater && selectedTime == schedule[index],
-              isEnabled: schedule[index] > DateTime.now().hour || selectedDate.day != DateTime.now().day,
-              onTap: () {
-                setState(() {
-                  selectedTheater = theater;
-                  selectedTime = schedule[index];
-                });
-              },
+            itemBuilder: (_, index) => Container(
+              margin: EdgeInsets.only(
+                left: (index == 0) ? defaultMargin : 0,
+                right: (index < schedule.length - 1) ? 16 : defaultMargin,
+              ),
+              child: SelectableBox(
+                "${schedule[index]}:00",
+                height: 50,
+                isSelected: selectedTheater == theater &&
+                    selectedTime == schedule[index],
+                isEnabled: schedule[index] > DateTime.now().hour ||
+                    selectedDate.day != DateTime.now().day,
+                onTap: () {
+                  setState(() {
+                    selectedTheater = theater;
+                    selectedTime = schedule[index];
+                    isValid = true;
+                  });
+                },
+              ),
             ),
           ),
         ),
