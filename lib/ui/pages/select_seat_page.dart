@@ -105,6 +105,82 @@ class _SelectSeatPageState extends State<SelectSeatPage> {
 
                     // note : Seats
                     generateSeats(),
+
+                    // note : Indikator
+                    Container(
+                      margin: EdgeInsets.fromLTRB(54, 23, 54, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: Color(0xFFE4E4E4),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 6,
+                              ),
+                              Text(
+                                "Available",
+                                style: greyTextFont.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: Color(0xFFF6F6F6),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 6,
+                              ),
+                              Text(
+                                "Boocked",
+                                style: greyTextFont.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6),
+                                    color: accentColor2),
+                              ),
+                              SizedBox(
+                                width: 6,
+                              ),
+                              Text(
+                                "Selected",
+                                style: greyTextFont.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+
                     SizedBox(
                       height: 30,
                     ),
@@ -123,10 +199,16 @@ class _SelectSeatPageState extends State<SelectSeatPage> {
                               ? Colors.white
                               : Color(0xFFBEBEBE),
                         ),
-                        onPressed: () {},
+                        onPressed: selectedSeats.length > 0
+                            ? () {
+                                context.bloc<PageBloc>().add(GoToCheckoutPage(
+                                    widget.ticket
+                                        .copyWitith(seats: selectedSeats)));
+                              }
+                            : null,
                       ),
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: 50,
                     ),
                   ],
