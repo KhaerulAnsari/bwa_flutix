@@ -77,5 +77,14 @@ class GoToCheckoutPage extends PageEvent {
   List<Object> get props => [ticket];
 }
 
+class GoToSuccessPage extends PageEvent{
+  final Ticket ticket;
+  final FlutixTransaction transaction;
+
+  GoToSuccessPage(this.ticket, this.transaction);
+  @override
+  List<Object> get props => [ticket, transaction];
+}
+
 
 
