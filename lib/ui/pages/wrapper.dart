@@ -13,6 +13,7 @@ class Wrapper extends StatelessWidget {
     } else {
       if (!(prevPageEvent is GoToMainPage)) {
         context.bloc<UserBloc>().add(LoadUser(firebaseUser.uid));
+        context.bloc<TicketBloc>().add(GetTickets(firebaseUser.uid));
 
         prevPageEvent = GoToMainPage();
         context.bloc<PageBloc>().add(prevPageEvent);
@@ -36,11 +37,19 @@ class Wrapper extends StatelessWidget {
                                 : (pageState is OnSelectSchedulPage)
                                     ? SelectSchedulPage(pageState.movieDetail)
                                     : (pageState is OnSelectSeatPage)
-                                    ? SelectSeatPage(pageState.ticket)
-                                    : (pageState is OnCheckoutPage)
-                                    ? CheckoutPage(pageState.ticket)
-                                    : (pageState is OnSuccessPage)
-                                    ? SuccessPage(pageState.ticket, pageState.transaction)
-                                    : MainPage());
+                                        ? SelectSeatPage(pageState.ticket)
+                                        : (pageState is OnCheckoutPage)
+                                            ? CheckoutPage(pageState.ticket)
+                                            : (pageState is OnSuccessPage)
+                                                ? SuccessPage(pageState.ticket,
+                                                    pageState.transaction)
+                                                : (pageState
+                                                        is OnTicketDetailPage)
+                                                    ? TicketDetailPage(
+                                                        pageState.ticket)
+                                                    : (pageState
+                                                            is OnProfilePage)
+                                                        ? ProfilePage()
+                                                        : MainPage());
   }
 }

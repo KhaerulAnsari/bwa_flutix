@@ -198,7 +198,9 @@ class MovieDetailPage extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            context.bloc<PageBloc>().add(GoToSelectSchedulPage(movieDetail));
+                            context
+                                .bloc<PageBloc>()
+                                .add(GoToSelectSchedulPage(movieDetail));
                           },
                         ),
                         SizedBox(

@@ -13,7 +13,7 @@ class MovieCard extends StatelessWidget {
           onTap();
         }
       },
-          child: Container(
+      child: Container(
         height: 140,
         width: 210,
         decoration: BoxDecoration(
