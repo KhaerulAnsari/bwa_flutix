@@ -1,6 +1,9 @@
 part of 'pages.dart';
 
 class TicketPage extends StatefulWidget {
+  final bool isExperidTicket;
+
+  TicketPage({this.isExperidTicket = false});
   @override
   _TicketPageState createState() => _TicketPageState();
 }
