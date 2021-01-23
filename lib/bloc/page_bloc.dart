@@ -54,5 +54,8 @@ class PageBloc extends Bloc<PageEvent, PageState> {
     else if (event is GoToProfilePage) {
       yield OnProfilePage();
     }
+    else if (event is GoToTopUpPage) {
+      yield OnTopUpPage(event.pageEvent);
+    }
   }
 }
