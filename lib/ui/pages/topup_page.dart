@@ -182,7 +182,7 @@ class _TopUpPageState extends State<TopUpPage> {
                                               title: "Top Up Wallet",
                                               amount: selectedAmount,
                                               subtitle:
-                                                  "${DateTime.now().dayDayName}, ${DateTime.now().day}, ${DateTime.now().monthName}, ${DateTime.now().year}",
+                                                  "${DateTime.now().dayName}, ${DateTime.now().day}, ${DateTime.now().monthName}, ${DateTime.now().year}",
                                               time: DateTime.now(),
                                             ),
                                           ),

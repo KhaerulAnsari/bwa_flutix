@@ -15,47 +15,36 @@ class PageBloc extends Bloc<PageEvent, PageState> {
   Stream<PageState> mapEventToState(
     PageEvent event,
   ) async* {
-    if(event is GoToSplashPage) {
+    if (event is GoToSplashPage) {
       yield OnSplahPage();
-    }
-    else if (event is GoToLoginPage) {
+    } else if (event is GoToLoginPage) {
       yield OnLoginPage();
-    }
-    else if (event is GoToMainPage) {
+    } else if (event is GoToMainPage) {
       yield OnMainPage();
-    }
-    else if (event is GoToRegistrationPage) {
+    } else if (event is GoToRegistrationPage) {
       yield OnRegistrationPage(event.registrationData);
-    }
-    else if (event is GoToPreferencePage) {
+    } else if (event is GoToPreferencePage) {
       yield OnPreferencePage(event.registrationData);
-    }
-    else if (event is GoToAccountConfirmationPage) {
+    } else if (event is GoToAccountConfirmationPage) {
       yield OnAccountConfirmationPage(event.registrationData);
-    }
-    else if (event is GoToMovieDetailPage) {
+    } else if (event is GoToMovieDetailPage) {
       yield OnMovieDetailPage(event.movie);
-    }
-    else if (event is GoToSelectSchedulPage) {
+    } else if (event is GoToSelectSchedulPage) {
       yield OnSelectSchedulPage(event.movieDetail);
-    }
-    else if (event is GoToSelectSeatPage) {
+    } else if (event is GoToSelectSeatPage) {
       yield OnSelectSeatPage(event.ticket);
-    }
-    else if (event is GoToCheckoutPage) {
+    } else if (event is GoToCheckoutPage) {
       yield OnCheckoutPage(event.ticket);
-    } 
-    else if (event is GoToSuccessPage) {
+    } else if (event is GoToSuccessPage) {
       yield OnSuccessPage(event.ticket, event.transaction);
-    }
-    else if (event is GoToTicketDetailPage) {
+    } else if (event is GoToTicketDetailPage) {
       yield OnTicketDetailPage(event.ticket);
-    }
-    else if (event is GoToProfilePage) {
+    } else if (event is GoToProfilePage) {
       yield OnProfilePage();
-    }
-    else if (event is GoToTopUpPage) {
+    } else if (event is GoToTopUpPage) {
       yield OnTopUpPage(event.pageEvent);
+    } else if (event is GoToWalletPage) {
+      yield OnWalletPage(event.pageEvent);
     }
   }
 }

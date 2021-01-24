@@ -22,7 +22,7 @@ extension DateTimeExtensions on DateTime {
     }
   }
 
-  String get dayDayName {
+  String get dayName {
     switch (this.weekday) {
       case 1:
         return 'Monday';

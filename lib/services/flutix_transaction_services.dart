@@ -9,7 +9,7 @@ class FlutixTransactionServices {
       'userID' : flutixTransaction.userID,
       'title' : flutixTransaction.title,
       'subtitle' : flutixTransaction.subtitle,
-      "time" : flutixTransaction.time,
+      "time" : flutixTransaction.time.millisecondsSinceEpoch,
       'amount' : flutixTransaction.amount,
       'picture' : flutixTransaction.picture,
     });
@@ -24,7 +24,7 @@ class FlutixTransactionServices {
       userID: e.data['userID'],
       title: e.data['title'],
       subtitle: e.data['subtitle'],
-      time: DateTime.fromMicrosecondsSinceEpoch(e.data['time']),
+      time: DateTime.fromMillisecondsSinceEpoch(e.data['time']),
       amount: e.data['amount'],
       picture: e.data['picture'],
     )).toList();

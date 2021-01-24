@@ -107,6 +107,14 @@ class GoToTopUpPage extends PageEvent {
   List<Object> get props => [pageEvent];
 }
 
+class GoToWalletPage extends PageEvent{
+  final PageEvent pageEvent;
+
+  GoToWalletPage(this.pageEvent);
+  @override
+  List<Object> get props => [pageEvent];
+}
+
 
 
 

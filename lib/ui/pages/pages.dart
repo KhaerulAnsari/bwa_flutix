@@ -35,4 +35,5 @@ part 'ticket_detail_page.dart';
 part 'profile_page.dart';
 part 'edit_profile_page.dart';
 part 'topup_page.dart';
+part 'wallet_page.dart';
 
