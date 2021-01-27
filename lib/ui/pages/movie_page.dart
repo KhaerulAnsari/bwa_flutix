@@ -33,11 +33,12 @@ class MoviePage extends StatelessWidget {
                       onTap: () {
                         context.bloc<PageBloc>().add(GoToProfilePage());
                       },
-                                          child: Container(
+                      child: Container(
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: Color(0xFF5F558B), width: 1),
+                          border:
+                              Border.all(color: Color(0xFF5F558B), width: 1),
                         ),
                         child: Stack(
                           children: <Widget>[
@@ -82,14 +83,21 @@ class MoviePage extends StatelessWidget {
                             overflow: TextOverflow.clip,
                           ),
                         ),
-                        Text(
-                          NumberFormat.currency(
-                                  locale: "id_ID",
-                                  decimalDigits: 0,
-                                  symbol: "IDR ")
-                              .format(userState.user.balance),
-                          style: yellowNumberFont.copyWith(
-                              fontSize: 14, fontWeight: FontWeight.w400),
+                        GestureDetector(
+                          onTap: () {
+                            context
+                                .bloc<PageBloc>()
+                                .add(GoToWalletPage(GoToMainPage()));
+                          },
+                          child: Text(
+                            NumberFormat.currency(
+                                    locale: "id_ID",
+                                    decimalDigits: 0,
+                                    symbol: "IDR ")
+                                .format(userState.user.balance),
+                            style: yellowNumberFont.copyWith(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                          ),
                         ),
                       ],
                     ),

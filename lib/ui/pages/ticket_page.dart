@@ -9,7 +9,14 @@ class TicketPage extends StatefulWidget {
 }
 
 class _TicketPageState extends State<TicketPage> {
-  bool isExpiredTickets = false;
+  bool isExpiredTickets;
+
+  @override
+  void initState() {
+    super.initState();
+
+    isExpiredTickets = widget.isExperidTicket;
+  }
 
   @override
   Widget build(BuildContext context) {

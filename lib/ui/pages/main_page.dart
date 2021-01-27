@@ -4,7 +4,7 @@ class MainPage extends StatefulWidget {
   final int bottomNavbarIndex;
   final bool isExpired;
 
-  MainPage({this.bottomNavbarIndex = 1, this.isExpired = false});
+  MainPage({this.bottomNavbarIndex = 0, this.isExpired = false});
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
 
-    bottomNavbarIndex = 0;
+    bottomNavbarIndex = widget.bottomNavbarIndex;
     pageController = PageController(initialPage: bottomNavbarIndex);
   }
 
@@ -43,7 +43,7 @@ class _MainPageState extends State<MainPage> {
             children: <Widget>[
               MoviePage(),
               TicketPage(
-                // isExperidTicket: widget.isExpired,
+                isExperidTicket: widget.isExpired,
               ),
             ],
           ),

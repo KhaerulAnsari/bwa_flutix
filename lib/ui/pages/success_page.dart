@@ -58,7 +58,7 @@ class SuccessPage extends StatelessWidget {
                             elevation: 0,
                             color: mainColor,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8), 
                             ),
                             child: Text(
                               (ticket == null) ? "My Wallet" : "My Tickets",
@@ -70,7 +70,9 @@ class SuccessPage extends StatelessWidget {
                                     .bloc<PageBloc>()
                                     .add(GoToWalletPage(GoToMainPage()));
                               } else {
-                                // todo: Go To Ticket Page
+                                context.bloc<PageBloc>().add(GoToMainPage(
+                                  bottomNavbarIndex: 1,
+                                )); 
                               }
                             },
                           ),

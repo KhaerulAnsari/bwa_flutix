@@ -20,8 +20,12 @@ class OnSplahPage extends PageState {
 }
 
 class OnMainPage extends PageState {
+  final int bottomNavbarIndex;
+  final bool isExpired;
+
+  OnMainPage({this.bottomNavbarIndex = 0, this.isExpired = false});
   @override
-  List<Object> get props => [];
+  List<Object> get props => [bottomNavbarIndex, isExpired];
 }
 
 class OnRegistrationPage extends PageState {
