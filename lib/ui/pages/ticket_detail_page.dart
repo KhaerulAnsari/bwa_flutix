@@ -8,7 +8,9 @@ class TicketDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        context.bloc<PageBloc>().add(GoToMainPage());
+        context.bloc<PageBloc>().add(GoToMainPage(
+            bottomNavbarIndex: 1,
+            isExpired: ticket.time.isBefore(DateTime.now())));
         // todo HomePage Index 1
         return;
       },
@@ -34,7 +36,13 @@ class TicketDetailPage extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: GestureDetector(
                           onTap: () {
-                            context.bloc<PageBloc>().add(GoToMainPage());
+                            context.bloc<PageBloc>().add(
+                                  GoToMainPage(
+                                    bottomNavbarIndex: 1,
+                                    isExpired:
+                                        ticket.time.isBefore(DateTime.now()),
+                                  ),
+                                );
                           },
                           child: Icon(
                             Icons.arrow_back,
@@ -203,11 +211,9 @@ class TicketDetailPage extends StatelessWidget {
                           SizedBox(
                             height: 20,
                           ),
-                          Divider(
-                            height: 1,
-                            color: Colors.grey,
-                          ),
-                          // todo Generate Dashet Divider
+                          generateDashedDivider(
+                              MediaQuery.of(context).size.width -
+                                  2 * defaultMargin),
                         ],
                       ),
                     ),

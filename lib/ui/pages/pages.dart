@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bwa_flutix/bloc/blocs.dart';
 import 'package:bwa_flutix/models/models.dart';
 import 'package:bwa_flutix/services/services.dart';
@@ -16,6 +18,7 @@ import 'package:intl/intl.dart';
 import 'package:random_string/random_string.dart';
 import 'package:bwa_flutix/extensions/extensions.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:path/path.dart';
 
 part 'main_page.dart';
 part 'sign_in_page.dart';

@@ -123,6 +123,14 @@ class OnWalletPage extends PageState{
   List<Object> get props => [pageEvent];
 }
 
+class OnEditProfilePage extends PageState {
+  final User user;
+
+  OnEditProfilePage(this.user);
+  @override
+  List<Object> get props => [user];
+}
+
 
 
 

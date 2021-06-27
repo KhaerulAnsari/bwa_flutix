@@ -95,34 +95,34 @@ class _ProfilePageState extends State<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       BlocBuilder<UserBloc, UserState>(
-                        builder: (_, userState) => Row(
-                          children: <Widget>[
-                            SizedBox(
-                              width: 24,
-                              height: 24,
-                              child: Image.asset("assets/edit_profile.png"),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Edit Profile",
-                              style: blackTextFont.copyWith(fontSize: 16),
-                            ),
-                          ],
+                        builder: (_, userState) => GestureDetector(
+                          onTap: () {
+                            context.bloc<PageBloc>().add(GoToEditProfilePage(
+                                (userState as UserLoaded).user));
+                          },
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: Image.asset("assets/edit_profile.png"),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Edit Profile",
+                                style: blackTextFont.copyWith(fontSize: 16),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 10, bottom: 16),
-                        child: // todo : generate dasehed divider
-                            SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              2 * defaultMargin,
-                          child: Divider(
-                            color: accentColor3,
-                            height: 1,
-                          ),
-                        ),
+                        child: generateDashedDivider(
+                            MediaQuery.of(context).size.width -
+                                2 * defaultMargin),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -149,15 +149,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 10, bottom: 16),
-                        child: // todo : generate dasehed divider
-                            SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              2 * defaultMargin,
-                          child: Divider(
-                            color: accentColor3,
-                            height: 1,
-                          ),
-                        ),
+                        child: generateDashedDivider(
+                            MediaQuery.of(context).size.width -
+                                2 * defaultMargin),
                       ),
                       Row(
                         children: <Widget>[
@@ -177,15 +171,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 10, bottom: 16),
-                        child: // todo : generate dasehed divider
-                            SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              2 * defaultMargin,
-                          child: Divider(
-                            color: accentColor3,
-                            height: 1,
-                          ),
-                        ),
+                        child: generateDashedDivider(
+                            MediaQuery.of(context).size.width -
+                                2 * defaultMargin),
                       ),
                       Row(
                         children: <Widget>[
@@ -205,15 +193,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 10, bottom: 16),
-                        child: // todo : generate dasehed divider
-                            SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              2 * defaultMargin,
-                          child: Divider(
-                            color: accentColor3,
-                            height: 1,
-                          ),
-                        ),
+                        child: generateDashedDivider(
+                            MediaQuery.of(context).size.width -
+                                2 * defaultMargin),
                       ),
                       Row(
                         children: <Widget>[
@@ -233,15 +215,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 10, bottom: 16),
-                        child: // todo : generate dasehed divider
-                            SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              2 * defaultMargin,
-                          child: Divider(
-                            color: accentColor3,
-                            height: 1,
-                          ),
-                        ),
+                        child: generateDashedDivider(
+                            MediaQuery.of(context).size.width -
+                                2 * defaultMargin),
                       ),
                       GestureDetector(
                         onTap: () async {
@@ -279,15 +255,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 10, bottom: 16),
-                        child: // todo : generate dasehed divider
-                            SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              2 * defaultMargin,
-                          child: Divider(
-                            color: accentColor3,
-                            height: 1,
-                          ),
-                        ),
+                        child: generateDashedDivider(
+                            MediaQuery.of(context).size.width -
+                                2 * defaultMargin),
                       ),
                     ],
                   ),
